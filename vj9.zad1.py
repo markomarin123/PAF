@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy import linalg as LA
 
-class Gravitacija:
+class gravitacija:
     def __init__(self,Mz,v_obodna,x,Ms,V,x2):
         self.m=Mz
         self.v=v_obodna
@@ -21,7 +21,7 @@ class Gravitacija:
         self.a2=-G*self.m/((LA.norm(np.array(self.x2)-np.array(self.x)))**3)*(np.array(self.x2)-np.array(self.x))
         self.V+=self.a2*dt
         self.x2+=self.V*dt
-        
+
     def reset(self):
         self.m,self.v,self.x=self.pocetni
         self.M,self.V,self.x2=self.pocetni2
@@ -50,5 +50,6 @@ class Gravitacija:
         plt.legend()
         plt.show()
 
-zemlja=Gravitacija(5.9742*10**24,(0,29783),(1.486*10**11,0),1.989*10**30,(0,0),(0,0))
+zemlja=gravitacija(5.9742*10**24,(0,29783),(1.486*10**11,0),1.989*10**30,(0,0),(0,0))
+
 zemlja.plot_trajectory(24*3600,365.242*24*3600)
